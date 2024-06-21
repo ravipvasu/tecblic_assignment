@@ -47,12 +47,14 @@ THIRD_PARTY_APPS = [
     'django_db_logger',
     'rest_framework',
     'corsheaders',
+    'channels',
 ]
 
 # Local Apps (project's apps)
 PROJECT_APPS = [
     'users',
     'api',
+    'messaging_app',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + PROJECT_APPS
@@ -65,6 +67,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'rbac_api.urls'
@@ -86,6 +89,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'rbac_api.wsgi.application'
+ASGI_APPLICATION = 'rbac_api.asgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
@@ -124,7 +128,19 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
+USE_L10N = True
+
 USE_TZ = True
+
+LANGUAGES = [
+    ('en', 'English'),
+    ('fr', 'French'),
+    ('hi', 'Hindi'),
+]
+
+LOCALE_PATHS = [
+    BASE_DIR / 'locale',
+]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
@@ -243,3 +259,13 @@ SUPPORT_EMAIL = "contact@example.com"
 SERVER_EMAIL = "contact@example.com"
 FROM_PERSON = "Admin Team"
 FROM_PERSON_EMAIL = "contact@example.com"
+
+# Channels layers settings
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}

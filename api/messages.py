@@ -1,8 +1,6 @@
-from django.utils.translation import gettext as _
-
 messages = {
     "common": {
-        "api_success": {"msg": _("Data fetched successfully"), "status_code": 2000},
+        "api_success": {"msg": "Data fetched successfully", "status_code": 2000},
         "api_failed": {"msg": "Unexpected error! Please contact the administrator", "status_code": 5000},
         "invalid_request": {"msg": "Invalid Request", "status_code": 4001},
         "no_data_available": {"msg": "Data not available", "status_code": 2040},

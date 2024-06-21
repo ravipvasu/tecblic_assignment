@@ -22,7 +22,6 @@ from rbac_api.settings import SITE_URL, ENVIRONMENT
 from users.models import Profile
 
 # Logger variables to be used for logging
-
 info_logger = logging.getLogger('api_info_logger')
 error_logger = logging.getLogger('api_db_error_logger')
 

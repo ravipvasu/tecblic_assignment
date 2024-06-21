@@ -1,9 +1,10 @@
 # Import System Modules
 
-
+# Import Third-party Python Modules
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
+# Import Project Modules
 from rbac_api.settings import AUTH_USER_MODEL
 from .managers import CustomUserManager
 
