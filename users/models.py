@@ -32,10 +32,8 @@ class User(AbstractUser):
 
 class Base(models.Model):
     is_active = models.SmallIntegerField(default=1, db_default=1)
-    created_on = models.DateTimeField(auto_now_add=True)
-    created_by = models.IntegerField()
+    created_on = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     modified_on = models.DateTimeField(auto_now=True, null=True, blank=True)
-    modified_by = models.IntegerField(blank=True, null=True)
     param_varchar_1 = models.CharField(max_length=255, blank=True, null=True)
     param_varchar_2 = models.CharField(max_length=255, blank=True, null=True)
     param_varchar_3 = models.CharField(max_length=255, blank=True, null=True)
